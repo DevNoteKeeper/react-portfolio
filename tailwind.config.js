@@ -11,6 +11,10 @@ module.exports = {
       fontFamily: {
         noto: ['"Noto Sans"', 'sans-serif'],
       },
+      fontSize: {
+        sectionTitle: ['1.5rem', {fontWeight: '700'}],
+        sectionSubTitle: ['1.3rem'],
+      }
     },
   },
   plugins: [],
