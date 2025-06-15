@@ -9,7 +9,7 @@ const stacks = [
             {name:'Java', logo: `${IMAGE_BASE.development}java.png`},
             {name:'unity', logo: `${IMAGE_BASE.development}unity.png`},
             {name:'HTML, CSS, JS', logo: `${IMAGE_BASE.development}weblan.png`},
-            {name:'React', logo: `${IMAGE_BASE.development}react.webp`},
+            {name:'React', logo: `${IMAGE_BASE.development}react.png`},
             {name:'flutter', logo: `${IMAGE_BASE.development}flutter.png`},
             {name:'Vue.js', logo: `${IMAGE_BASE.development}vue.png`},
             {name:'python', logo: `${IMAGE_BASE.development}python.png`},
@@ -19,8 +19,8 @@ const stacks = [
         category: 'Design',
         items: [
             {name:'Figma', logo: `${IMAGE_BASE.design}figma.png`},
+            {name: 'vrew', logo: `${IMAGE_BASE.design}vrew.png` },
             {name:'illustrator', logo: `${IMAGE_BASE.design}illustrator.png`},
-            {name:'vrew', logo: `${IMAGE_BASE.design}vrew.png`},
             {name:'Blender', logo: `${IMAGE_BASE.design}blender.png`},
             {name:'photoshop', logo: `${IMAGE_BASE.design}photoshop.png`},
             {name:'premiere', logo: `${IMAGE_BASE.design}premiere.png`},
@@ -39,10 +39,10 @@ const stacks = [
         {
         category: 'Community',
         items: [
-            {name:'slack', logo: `${IMAGE_BASE.tool}slack.png`},
-            {name:'Notion', logo: `${IMAGE_BASE.tool}notion.png`},
-            {name:'trello', logo: `${IMAGE_BASE.tool}trello.png`},
-            {name:'zapier', logo: `${IMAGE_BASE.tool}zapier.png`},
+            {name:'slack', logo: `${IMAGE_BASE.community}slack.png`},
+            {name:'Notion', logo: `${IMAGE_BASE.community}notion.png`},
+            {name:'trello', logo: `${IMAGE_BASE.community}trello.png`},
+            {name:'zapier', logo: `${IMAGE_BASE.community}zapier.png`},
 
         ]
     },
