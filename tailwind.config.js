@@ -14,7 +14,7 @@ module.exports = {
       fontSize: {
         sectionTitle: ['1.8rem', {  fontWeight: '700' }], // 32px, 44.8px(140%)
         sectionSubTitle: ['1.5rem', {fontWeight: '700' }], // 24px, 33.6px(140%)
-        sectionDescription: ['1.5rem', { fontWeight: '400' }], // 24px, 33.6px(140%)
+        sectionDescription: ['1.2rem', { fontWeight: '400' }], // 24px, 33.6px(140%)
       }
     },
   },

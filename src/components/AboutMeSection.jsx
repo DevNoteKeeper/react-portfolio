@@ -12,8 +12,8 @@ const abouts = [
 
 const AboutSection = ({abouts}) => {
     return(
-        <section id='about' className="py-16">
-            <h2 className="text-sectionTitle text-point mb-10">About</h2>
+        <section id='about' className="py-20">
+            <h2 className="text-sectionTitle text-point mb-16">About</h2>
         
             <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-32 px-1">
             {/* 왼쪽 이미지 */}

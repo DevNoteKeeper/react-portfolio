@@ -5,4 +5,6 @@ export const IMAGE_BASE = {
     community: 'https://raw.githubusercontent.com/DevNoteKeeper/dev_hub_imgae/main/tool/',
     vcs: 'https://raw.githubusercontent.com/DevNoteKeeper/dev_hub_imgae/main/vcs/',
     about: 'https://raw.githubusercontent.com/DevNoteKeeper/dev_hub_imgae/main/about/',
+    education: 'https://raw.githubusercontent.com/DevNoteKeeper/dev_hub_imgae/main/edu/',
+    career: 'https://raw.githubusercontent.com/DevNoteKeeper/dev_hub_imgae/main/career/',
 }

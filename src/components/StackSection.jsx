@@ -58,19 +58,22 @@ const stacks = [
 
 const StackSection = ({stack}) => {
     return(
-        <section id='stack' className="py-16">
-            <h2 className="text-sectionTitle text-point mb-10">Skill & Tool</h2>
+        <section id='stack' className="py-20">
+            <h2 className="text-sectionTitle text-point mb-16">Skill & Tool</h2>
 
-            <div className="space-y-12">
+            <div className="space-y-20">
                 {stacks.map((category) =>
                 (
-                    <div key={category.category} className='flex items-center gap-10 flex-wrap md:flex-nowrap ml-6'>
+                    <div key={category.category} className='flex items-center gap-14 flex-wrap md:flex-nowrap ml-6'>
                         <h3 className="text-sectionSubTitle text-gTitle w-[140px] shrink-0">{category.category}</h3>
-                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-6">
+                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-10">
                             {category.items.map((tool) => (
                                 <div key={tool.name} className="relative flex flex-col items-center group">
-                                    <img src={tool.logo} alt={tool.name} className="w-16 h-10 object-contain"/>
-                                    <div className='absolute inset-0 flex items-center justify-center text-white text-xs font-semibold bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity rounded'>{tool.name}</div>
+                                    <img src={tool.logo} alt={tool.name} className="w-14 h-14 object-contain"/>
+                                    <div className='absolute inset-0 flex items-center justify-center text-white text-xs font-semibold 
+                                    bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity rounded'>
+                                        {tool.name}
+                                    </div>
                                 </div>
                             ))}
                             </div>
