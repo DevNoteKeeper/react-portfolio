@@ -16,4 +16,7 @@
 ### run server
 
 `yarn start`
-asdfasdfasdf
+
+## 추가 effect
+
+- About에서 위쪽 Center 기준으로 드래그 시 흔들리는 motion

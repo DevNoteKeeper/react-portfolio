@@ -65,12 +65,12 @@ const StackSection = ({stack}) => {
                 {stacks.map((category) =>
                 (
                     <div key={category.category} className='flex items-center gap-10 flex-wrap md:flex-nowrap ml-6'>
-                        <h3 className="text-sectionSubTitle text-gTitle mim-w-[120px]">{category.category}</h3>
+                        <h3 className="text-sectionSubTitle text-gTitle w-[140px] shrink-0">{category.category}</h3>
                         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-6">
                             {category.items.map((tool) => (
-                                <div key={tool.name} className="flex flex-col items-center">
+                                <div key={tool.name} className="relative flex flex-col items-center group">
                                     <img src={tool.logo} alt={tool.name} className="w-16 h-10 object-contain"/>
-                                    {/* <span className="mt-2 text-gDesc">{tool.name}</span> */}
+                                    <div className='absolute inset-0 flex items-center justify-center text-white text-xs font-semibold bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity rounded'>{tool.name}</div>
                                 </div>
                             ))}
                             </div>
