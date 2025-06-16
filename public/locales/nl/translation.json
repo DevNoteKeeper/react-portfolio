@@ -1,0 +1,54 @@
+{
+    "education": {
+        "twente": {
+            "school": "Universiteit Twente",
+            "department": "Creative Technology",
+            "location": "📍 Enschede, Nederland",
+            "period": "sep 2024 - heden"
+        },
+        "saxion": {
+            "school": "Hogeschool Saxion",
+            "department": "ICT",
+            "location": "📍 Deventer, Nederland",
+            "period": "sep 2023 - aug 2024"
+        },
+        "hanyang": {
+            "school": "Hanyang Cyber University",
+            "department": "Nieuwe Media Vormgeving",
+            "location": "📍 Seoel, Zuid-Korea",
+            "period": "mrt 2019 - jun 2022"
+        },
+        "sunrin": {
+            "school": "Sunrin Internet High School",
+            "department": "Technologisch Management",
+            "location": "📍 Seoel, Zuid-Korea",
+            "period": "feb 2015 - feb 2018"
+        }
+    },
+    "career": {
+        "sparta": {
+            "company": "TeamSparta",
+            "role": "Freelancer",
+            "location": "📍 Seoel, Zuid-Korea",
+            "period": "maart 2022 - heden"
+        },
+        "shim": {
+            "company": "Shim Company Korea",
+            "role": "Assistent Tentoonstelling",
+            "location": "📍 Seoel, Zuid-Korea",
+            "period": "oktober 2020 - december 2021"
+        },
+        "moms": {
+            "company": "Mom’s Touch",
+            "role": "Filiaalmanager",
+            "location": "📍 Seoel, Zuid-Korea",
+            "period": "februari 2019 - juni 2020"
+        },
+        "lucid": {
+            "company": "Lucidpromo",
+            "role": "Marketingmedewerker",
+            "location": "📍 Seoel, Zuid-Korea",
+            "period": "juli 2017 - september 2018"
+        }
+    }
+}

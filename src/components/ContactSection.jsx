@@ -61,6 +61,13 @@ const ContactSection = () => {
           <br />
           Your message will be handled with care:)
         </p>
+        <p className="text-gTitle mb-8 leading-relaxed">
+          Als u geïnteresseerd bent in samenwerking of een project wilt
+          bespreken, vul dan alstublieft het formulier in.
+          <br />
+          Uw bericht wordt met zorg behandeld :)
+          <br />U kunt ook gerust feedback achterlaten :)
+        </p>
       </div>
 
       <form
