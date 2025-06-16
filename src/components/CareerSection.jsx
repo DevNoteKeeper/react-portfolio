@@ -14,7 +14,7 @@ const CareerSection = () => {
 
   return (
     <section id="career" className="py-20">
-      <h2 className="text-sectionTitle text-point mb-16">Career</h2>
+      <h2 className="text-sectionTitle text-gTitle mb-16">Career</h2>
       <div className="max-w-1xl space-y-12">
         {careers.map((career) => (
           <div
