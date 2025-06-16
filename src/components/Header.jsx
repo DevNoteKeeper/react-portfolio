@@ -156,7 +156,7 @@ const Header = () => {
           </nav>
 
           {/* Signin Button */}
-          <button
+          {/* <button
             className={`px-4 py-2 rounded transition ${
               signInActive
                 ? "text-point font-bold"
@@ -165,7 +165,7 @@ const Header = () => {
             onClick={() => setSignInActive(true)}
           >
             Sign In
-          </button>
+          </button> */}
           <LanguageSelector />
         </div>
       </div>
