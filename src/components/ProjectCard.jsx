@@ -39,7 +39,7 @@ export default function ProjectCard({
       <div className="md:w-3/5 w-full h-auto relative">
         <img
           src={project.main_image}
-          alt={project.title}
+          alt={project.name}
           className="w-full h-full object-cover"
         />
         {/* Overlay */}
@@ -69,7 +69,7 @@ export default function ProjectCard({
         } items-center text-center`}
       >
         <p className="text-sm text-gTitle">{project.team}</p>
-        <h3 className="text-lg font-bold text-point">{project.title}</h3>
+        <h3 className="text-lg font-bold text-point">{project.name}</h3>
         <p className="text-xs text-gDesc">{project.period}</p>
       </div>
     </div>
