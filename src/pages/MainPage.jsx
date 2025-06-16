@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import Header from "../components/Header";
 import MainSection from "../components/MainSection";
 import AboutMeSection from "../components/AboutMeSection";
@@ -9,7 +11,25 @@ import CareerSection from "../components/CareerSection";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
 
-export default function MainPage() {
+const MainPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const sectionId = location.state.scrollTo;
+      const el = document.getElementById(sectionId);
+      if (el) {
+        const headerOffset = 64;
+        const elementPosition =
+          el.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      }
+      // 스크롤 후 state 초기화 (URL 깨끗하게)
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
+
   return (
     <div className="bg-bgDark text-gDesc font-noto min-h-screen">
       <Header />
@@ -25,4 +45,6 @@ export default function MainPage() {
       <Footer />
     </div>
   );
-}
+};
+
+export default MainPage;

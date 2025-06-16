@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-export default function ProjectCard({ project, isEven, onClick }) {
+export default function ProjectCard({
+  project,
+  isEven,
+  onClick,
+  useTranslateY,
+  isGridLayout,
+}) {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = () => {
@@ -14,11 +20,19 @@ export default function ProjectCard({ project, isEven, onClick }) {
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative flex-shrink-0 w-full sm:w-80 md:w-96 overflow-hidden rounded-xl flex cursor-pointer ${
-        isEven ? "flex-row-reverse" : "flex-row"
-      } shadow-lg m-8`}
+      className={`relative overflow-hidden rounded-xl flex cursor-pointer shadow-lg ${
+        isGridLayout
+          ? `w-full ${isEven ? "flex-row-reverse" : "flex-row"}`
+          : `flex-shrink-0 w-full sm:w-80 md:w-96 m-8 ${
+              isEven ? "flex-row-reverse" : "flex-row"
+            }`
+      }`}
       style={{
-        transform: isEven ? "translateY(20px)" : "translateY(-20px)",
+        transform: useTranslateY
+          ? isEven
+            ? "translateY(20px)"
+            : "translateY(-20px)"
+          : undefined,
       }}
     >
       {/* Image */}
