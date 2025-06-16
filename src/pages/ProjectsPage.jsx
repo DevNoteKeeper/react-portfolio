@@ -1,12 +1,15 @@
+// pages/ProjectPage.jsx
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import useProjects from "../hooks/useProjects";
 import ProjectCard from "../components/ProjectCard";
-import projects from "../constants/projectsData";
+import ProjectPopup from "../components/ProjectPopup";
 
 const categories = ["all", "development", "design", "idea"];
 
-const ProjectPage = () => {
+export default function ProjectPage() {
+  const { projects, loading } = useProjects();
   const [filter, setFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -14,13 +17,13 @@ const ProjectPage = () => {
     filter === "all"
       ? projects
       : projects.filter((p) => p.type?.includes(filter));
+
   return (
     <div className="bg-white pt-20 text-bgDark min-h-screen flex flex-col">
       <Header />
-      <main className="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main className="flex-grow max-w-6xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold text-bgDark mb-8">Projects</h2>
 
-        {/* Filter */}
         <div className="flex gap-4 mb-12">
           {categories.map((cat) => (
             <button
@@ -37,26 +40,34 @@ const ProjectPage = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {filteredProjects.map((project, index) => (
-            <div
-              className="transition-transform duration-300 hover:scale-105 hover:shadow-xl rounded-xl"
-              key={project.id}
-            >
-              <ProjectCard
-                project={project}
-                isEven={false}
-                isGridLayout={true}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+            {filteredProjects.map((project, index) => (
+              <div
+                key={project.id}
+                className="transition-transform duration-300 hover:scale-105 hover:shadow-xl rounded-xl"
                 onClick={() => setSelectedProject(project)}
-              />
-            </div>
-          ))}
-        </div>
+              >
+                <ProjectCard
+                  project={project}
+                  isEven={false}
+                  isGridLayout={true}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        {selectedProject && (
+          <ProjectPopup
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
       </main>
+
       <Footer />
     </div>
   );
-};
-
-export default ProjectPage;
+}

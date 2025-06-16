@@ -1,23 +1,41 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 import ProjectCard from "./ProjectCard";
-import projects from "../constants/projectsData";
+import ProjectPopup from "../components/ProjectPopup";
 
 export default function ProjectSection() {
   const scrollRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [projects, setProjects] = useState([]);
   const navigate = useNavigate();
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  // 스크롤 위치에 따라 진행률 계산 함수
+  const fetchProjects = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "projects"));
+      const data = querySnapshot.docs
+        .map((doc) => ({ id: doc.id, ...doc.data() }))
+        .filter((p) => p.main_display !== false); // ✅ main_display 필터링
+      setProjects(data);
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
   const onScroll = () => {
     if (!scrollRef.current) return;
     const { scrollLeft, scrollWidth, offsetWidth } = scrollRef.current;
     const maxScrollLeft = scrollWidth - offsetWidth;
     const progress = maxScrollLeft > 0 ? scrollLeft / maxScrollLeft : 0;
-    setScrollProgress(progress); // 0~1 사이 값 저장
+    setScrollProgress(progress);
   };
 
-  // 1. 가로 스크롤 + wheel 감지
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -37,23 +55,16 @@ export default function ProjectSection() {
     };
 
     el.addEventListener("wheel", handleWheel, { passive: false });
-
-    return () => {
-      el.removeEventListener("wheel", handleWheel);
-    };
+    return () => el.removeEventListener("wheel", handleWheel);
   }, []);
 
-  // 2. 초기 scroll 위치 계산
   useEffect(() => {
     onScroll();
-  }, []);
-
-  const visibleProjects = projects.filter((p) => p.main_display !== false);
+  }, [projects]);
 
   return (
     <section id="project" className="py-20">
       <div className="max-w-6xl mx-auto py-4">
-        {/* Section Title */}
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-3xl font-bold text-gTitle">Project</h2>
           <button
@@ -64,7 +75,6 @@ export default function ProjectSection() {
           </button>
         </div>
 
-        {/* Project Cards */}
         <div className="relative">
           <div
             ref={scrollRef}
@@ -72,27 +82,38 @@ export default function ProjectSection() {
             style={{ scrollBehavior: "smooth" }}
             className="scrollbar-container rounded-xl bg-[#282D5B] bg-opacity-80 overflow-x-auto overflow-y-hidden flex flex-row gap-8 p-10 min-h-[320px]"
           >
-            {visibleProjects.map((project, idx) => (
-              <ProjectCard
-                key={idx}
-                project={project}
-                isEven={idx % 2 !== 0}
-                useTranslateY={true}
-                isGridLayout={false}
-              />
+            {projects.map((project, idx) => (
+              <div
+                key={project.id || idx}
+                onClick={(e) => {
+                  if (e.target.tagName.toLowerCase() === "a") return; // 링크 클릭 방지
+                  setSelectedProject(project);
+                }}
+                className="cursor-pointer"
+              >
+                <ProjectCard
+                  project={project}
+                  isEven={idx % 2 !== 0}
+                  useTranslateY={true}
+                  isGridLayout={false}
+                />
+              </div>
             ))}
 
-            {/* 📍 스크롤 프로그레스 바 */}
             <div className="absolute bottom-4 left-4 right-4 h-2 bg-gray-700 rounded-full overflow-hidden shadow-md">
               <div
                 className="h-full bg-gTitle transition-all duration-300"
-                style={{
-                  width: `${Math.max(scrollProgress * 100, 20)}%`, // 최소 20%
-                }}
+                style={{ width: `${Math.max(scrollProgress * 100, 20)}%` }}
               ></div>
             </div>
           </div>
         </div>
+        {selectedProject && (
+          <ProjectPopup
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
       </div>
     </section>
   );

@@ -9,15 +9,15 @@ export default function ProjectCard({
 }) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleClick = () => {
-    if (project.link) {
-      window.open(project.link, "_blank", "noopener,noreferrer");
-    }
-  };
+  // const handleClick = () => {
+  //   if (project.link) {
+  //     window.open(project.link, "_blank", "noopener,noreferrer");
+  //   }
+  // };
 
   return (
     <div
-      onClick={handleClick}
+      // onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`relative overflow-hidden rounded-xl flex cursor-pointer shadow-lg ${
@@ -38,7 +38,7 @@ export default function ProjectCard({
       {/* Image */}
       <div className="md:w-3/5 w-full h-auto relative">
         <img
-          src={project.image}
+          src={project.main_image}
           alt={project.title}
           className="w-full h-full object-cover"
         />
@@ -55,7 +55,7 @@ export default function ProjectCard({
           }}
         >
           {isHovered && (
-            <p className="text-bgDark font-bold text-sm max-w-xs">
+            <p className="text-bgDark font-semibold text-sm max-w-xs">
               {project.desc}
             </p>
           )}
