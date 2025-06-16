@@ -6,35 +6,44 @@ const projects = [
     title: "Build CV",
     team: "Team",
     period: "2025.03.12 - 2025.04.04",
+    desc: "platform that helps users easily and efficiently create tailored CVs for different job application",
     image:
       "https://raw.githubusercontent.com/DevNoteKeeper/dev_hub_imgae/refs/heads/main/main2.png",
+    link: "https://www.notion.so/TimeTune-APP-Destktop-1992a50c22fa806081f9ca849285ba85?source=copy_link",
   },
   {
     title: "Build CV",
     team: "Team",
     period: "2025.03.12 - 2025.04.04",
+    desc: "platform that helps users easily and efficiently create tailored CVs for different job application",
     image:
       "https://raw.githubusercontent.com/DevNoteKeeper/dev_hub_imgae/refs/heads/main/main2.png",
+    link: "https://prism-snap-002.notion.site/TimeTune-APP-Destktop-1992a50c22fa806081f9ca849285ba85?source=copy_link",
   },
   {
     title: "Build CV",
     team: "Team",
     period: "2025.03.12 - 2025.04.04",
+    desc: "platform that helps users easily and efficiently create tailored CVs for different job application",
     image:
       "https://raw.githubusercontent.com/DevNoteKeeper/dev_hub_imgae/refs/heads/main/main2.png",
+    link: "https://prism-snap-002.notion.site/TimeTune-APP-Destktop-1992a50c22fa806081f9ca849285ba85?source=copy_link",
   },
   {
     title: "Build CV",
     team: "Team",
     period: "2025.03.12 - 2025.04.04",
+    desc: "platform that helps users easily and efficiently create tailored CVs for different job application",
     image:
       "https://raw.githubusercontent.com/DevNoteKeeper/dev_hub_imgae/refs/heads/main/main2.png",
+    link: "https://prism-snap-002.notion.site/TimeTune-APP-Destktop-1992a50c22fa806081f9ca849285ba85?source=copy_link",
   },
 ];
 
 export default function ProjectSection() {
   const scrollRef = useRef(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [popupUrl, setPopupUrl] = useState(null);
 
   // 스크롤 위치에 따라 진행률 계산 함수
   const onScroll = () => {
@@ -68,6 +77,33 @@ export default function ProjectSection() {
       onScroll();
     }
   };
+  // 1. 가로 스크롤 + wheel 감지
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const handleWheel = (e) => {
+      const canScrollHorizontally = el.scrollWidth > el.clientWidth;
+      const atStart = el.scrollLeft === 0;
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1;
+
+      if (!canScrollHorizontally) return;
+
+      if ((e.deltaY < 0 && !atStart) || (e.deltaY > 0 && !atEnd)) {
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+        onScroll();
+      }
+    };
+
+    el.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      el.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
+  // 2. 초기 scroll 위치 계산
   useEffect(() => {
     onScroll();
   }, []);
@@ -84,16 +120,27 @@ export default function ProjectSection() {
         </div>
 
         {/* Project Cards */}
-        <div
-          ref={scrollRef}
-          onWheel={onWheel}
-          onScroll={onScroll}
-          style={{ scrollBehavior: "smooth" }}
-          className="scrollbar-container rounded-xl bg-[#282D5B] bg-opacity-80 overflow-x-auto overflow-y-hidden flex flex-row p-4 relative custom-scrollbar"
-        >
-          {projects.map((project, idx) => (
-            <ProjectCard key={idx} project={project} isEven={idx % 2 !== 0} />
-          ))}
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            onScroll={onScroll}
+            style={{ scrollBehavior: "smooth" }}
+            className="scrollbar-container rounded-xl bg-[#282D5B] bg-opacity-80 overflow-x-auto overflow-y-hidden flex flex-row gap-8 p-10 min-h-[320px]"
+          >
+            {projects.map((project, idx) => (
+              <ProjectCard key={idx} project={project} isEven={idx % 2 !== 0} />
+            ))}
+
+            {/* 📍 스크롤 프로그레스 바 */}
+            <div className="absolute bottom-4 left-4 right-4 h-2 bg-gray-700 rounded-full overflow-hidden shadow-md">
+              <div
+                className="h-full bg-gTitle transition-all duration-300"
+                style={{
+                  width: `${Math.max(scrollProgress * 100, 20)}%`, // 최소 20%
+                }}
+              ></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

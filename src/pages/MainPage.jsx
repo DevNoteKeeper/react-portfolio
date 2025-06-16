@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-// import MainSection from '../components/MainSection';
+import MainSection from "../components/MainSection";
 import AboutMeSection from "../components/AboutMeSection";
 import StackSection from "../components/StackSection";
 import ProjectSection from "../components/ProjectSection";
@@ -13,8 +13,8 @@ export default function MainPage() {
   return (
     <div className="bg-bgDark text-gDesc font-noto min-h-screen">
       <Header />
+      <MainSection id="home" />
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg-px-8 pt-16">
-        {/* <MainSection id="home" /> */}
         <AboutMeSection id="about" />
         <StackSection id="stack" />
         <ProjectSection id="project" />

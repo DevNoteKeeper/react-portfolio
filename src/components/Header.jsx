@@ -30,7 +30,6 @@ const Header = () => {
       "career",
       "contact",
     ];
-
     const onScroll = () => {
       let current = "home";
 
@@ -38,18 +37,17 @@ const Header = () => {
         const el = document.getElementById(sectionId);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 100) {
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
             current = sectionId;
+            break;
           }
         }
       }
       setActiveSection(current);
     };
-    window.addEventListener("scroll", onScroll);
 
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
   const getSectionLabel = (section) => {
     switch (section) {
@@ -77,6 +75,7 @@ const Header = () => {
   const handleMenuClick = (section) => {
     setSignInActive(false);
     scrollToSection(section);
+    window.history.pushState(null, "", `#${section}`);
   };
 
   return (

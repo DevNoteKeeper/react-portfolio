@@ -44,7 +44,7 @@ const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-20 px-4 flex flex-col md:flex-row justify-between items-start gap-12 max-w-5xl mx-auto"
+      className="mt-40 mb-40 py-20 px-4 flex flex-col md:flex-row justify-between items-start gap-12 max-w-5xl mx-auto"
     >
       <div className="text-left max-w-md mt-2">
         <p className="text-gTitle mb-4 leading-relaxed">
