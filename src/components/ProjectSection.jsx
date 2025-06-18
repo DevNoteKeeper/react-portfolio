@@ -4,6 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import ProjectCard from "./ProjectCard";
 import ProjectPopup from "../components/ProjectPopup";
+import { useTranslation } from "react-i18next";
 
 export default function ProjectSection() {
   const scrollRef = useRef(null);
@@ -11,6 +12,7 @@ export default function ProjectSection() {
   const [projects, setProjects] = useState([]);
   const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState(null);
+  const { t } = useTranslation();
 
   const fetchProjects = async () => {
     try {
@@ -71,7 +73,7 @@ export default function ProjectSection() {
             onClick={() => navigate("/projects")}
             className="border border-gTitle text-gTitle px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-bgDark transition"
           >
-            전체보기
+            {t(`project.button`)}
           </button>
         </div>
 

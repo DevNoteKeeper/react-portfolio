@@ -13,7 +13,7 @@ i18n
     ns: ["translation"],
     defaultNS: "translation",
     backend: {
-      loadPath: "/locales/{{lng}}/{{ns}}.json",
+      loadPath: process.env.PUBLIC_URL + "/locales/{{lng}}/{{ns}}.json", // ✅ 요거!
     },
     interpolation: {
       escapeValue: false,

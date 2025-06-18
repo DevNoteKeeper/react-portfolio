@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function MainSection() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isActive, setIsActive] = useState(true);
   const sectionRef = useRef(null);
+  const { t } = useTranslation();
 
   // 마우스 위치 추적
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function MainSection() {
           transition={{ duration: 1 }}
           className="text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 via-pink-400 to-yellow-300 bg-clip-text text-transparent drop-shadow-xl"
         >
-          Create. Inspire. Build.
+          {t(`main.title`)}
         </motion.h1>
 
         <motion.p
@@ -68,9 +70,9 @@ export default function MainSection() {
           transition={{ delay: 0.3, duration: 1 }}
           className="text-xl md:text-2xl mt-6 text-white/80 max-w-2xl leading-relaxed"
         >
-          아이디어를 코드로, 감각을 인터페이스로.
+          {t(`main.sub1`)}
           <br className="hidden md:block" />
-          당신의 상상을 현실로 구현합니다.
+          {t(`main.sub2`)}
         </motion.p>
 
         <motion.a
@@ -80,7 +82,7 @@ export default function MainSection() {
           transition={{ delay: 0.6, duration: 0.6 }}
           className="mt-10 inline-block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition-transform"
         >
-          나의 작업 보기
+          {t(`main.button`)}
         </motion.a>
       </div>
 

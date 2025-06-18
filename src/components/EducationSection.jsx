@@ -11,11 +11,10 @@ const educations = [
 
 const EducationSection = () => {
   const { t } = useTranslation();
-  console.log(t("education.twente.school"));
 
   return (
     <section id="education" className="py-20">
-      <h2 className="text-sectionTitle text-gTitle mb-16">{t("Education")}</h2>
+      <h2 className="text-sectionTitle text-gTitle mb-16">Education</h2>
       <div className="max-w-1xl space-y-12">
         {educations.map((edu) => (
           <div
