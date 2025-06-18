@@ -50,5 +50,14 @@
             "location": "📍 Seoul, Korea",
             "period": "2017.July - 2018.Sep"
         }
+    },
+    "main": {
+        "title": "Create. Inspire. Build.",
+        "sub1": "From ideas to code, from sense to interface.",
+        "sub2": "I bring your imagination to life.",
+        "button": "View my work"
+    },
+    "project": {
+        "button": "View All"
     }
 }

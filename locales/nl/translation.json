@@ -50,5 +50,14 @@
             "location": "📍 Seoel, Zuid-Korea",
             "period": "juli 2017 - september 2018"
         }
+    },
+    "main": {
+        "title": "Create. Inspire. Build.",
+        "sub1": "Van idee naar code, van gevoel naar interface.",
+        "sub2": "Ik breng jouw verbeelding tot leven.",
+        "button": "Bekijk mijn werk"
+    },
+    "project": {
+        "button": "Alles Bekijken"
     }
 }
