@@ -95,7 +95,7 @@ const Header = () => {
     } else {
       // 이미 메인 페이지면 바로 스크롤
       scrollToSection(section);
-      window.history.pushState(null, "", `react-portfolio/#${section}`);
+      navigate(`/${section}`, { replace: true });
     }
   };
 
